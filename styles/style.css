@@ -538,3 +538,111 @@
 .star.transparent{
     opacity: 0.2;
 }
+/* -----------------------------------------------------------------------
+-------------------------------contacts-------------------------------
+--------------------------------------------------------------------------  */
+.contacts{
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+}
+.contacts-gray{
+    background: #FBFBFB;
+    color: #373737;
+}
+.contacts-green{
+    background: #70BD59;
+    color: #ffffff;
+}
+.contacts__item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    padding: 30px;
+    width: 50%;
+}
+.contacts__item-img{
+    margin-bottom: 16px;
+}
+.contacts__item-title{
+    font-family: Oswald;
+    font-size: 24px;
+    line-height: 36px;
+    text-align: center;
+    letter-spacing: 2.66667px; 
+    margin-bottom: 22px;
+}
+.contacts__item-p{
+    opacity: 0.8;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    letter-spacing: 1.55556px;
+}
+/* -----------------------------------------------------------------------
+---------------------------------footer---------------------------------
+--------------------------------------------------------------------------  */
+.footer__body{
+    height: 340px;
+    background: #2E2E2E;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.footer__p{
+    font-family: Oswald;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 19px;
+    letter-spacing: 0.832px;
+    color: #FFFFFF;
+    mix-blend-mode: normal;
+    opacity: 0.5;
+    margin-bottom: 10px;
+}
+.footer__p:last-of-type{
+    margin-bottom: 40px;
+}
+.footer__p a{
+    font-family: Oswald;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 19px;
+    letter-spacing: 0.832px;
+    color: #FFFFFF;
+    text-decoration: none;
+    mix-blend-mode: normal;
+}
+.footer__bottom{
+    background: #252525;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.footer__bottom-p{
+    font-family: Oswald;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 19px;
+    letter-spacing: 0.832px;
+    color: #FFFFFF;
+    mix-blend-mode: normal;
+    opacity: 0.5;
+}
+.footer__bottom-p a{
+    font-family: Oswald;
+    font-weight: 300;
+    text-decoration: none;
+    color: #FFFFFF;
+    mix-blend-mode: normal;
+}
+.footer__icon:not(:last-of-type){
+    margin-right: 20px;
+}
