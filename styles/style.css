@@ -63,6 +63,9 @@
     padding: 50px;
     position: relative;
 }
+/* -----------------------------------------------------------------------
+----------------------------------intro---------------------------------
+-------------------------------------------------------------------------  */
 .intro{
     height: calc(100vh - 100px);
     width: 100%;
@@ -159,4 +162,134 @@
     color: #FFFFFF;
     mix-blend-mode: normal;
     opacity: 0.8;
+}
+/* -----------------------------------------------------------------------
+-----------------------------advantages-----------------------------
+-------------------------------------------------------------------------  */
+.advantages{
+    margin-top: 150px;
+}
+.advantages__body{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+.advantages__info{
+    align-self: flex-start;
+    margin-top: 70px;
+    width: 350px;
+    position: absolute;
+    z-index: 2;
+    left: 15px;
+}
+.advantages__info .quote{
+    margin-left: 20px;
+}
+.advantages__images{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 560px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.advantages__img{
+    width: 309px;
+    height: 391px;
+    object-fit: cover;
+}
+.advantages__img:first-of-type{
+    align-self: flex-start;
+    z-index: 1;
+    margin-right: -90px;
+}
+.advantages__img:last-of-type{
+    align-self: flex-end;
+    z-index: -1;
+    margin-left: -90px;
+}
+.advantages__img_green{
+    width: 309px;
+    height: 418px;
+    background: #4CAF50;
+    mix-blend-mode: normal;
+    opacity: 0.8;
+    z-index: 0;
+}
+.advantages__left{
+    position: absolute !important;
+    align-self: flex-end;
+    right: 15px;
+    width: 311px;
+    margin-bottom: 80px;
+}
+.advantages__title{
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    font-family: Oswald;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 53px;
+    letter-spacing: 2.304px;
+    color: #333333;
+}
+.advantages__title span{
+    font-size: 42px;
+    line-height: 49px;
+    letter-spacing: 2.688px;
+    font-weight: 300;
+    color: #504E4E;
+}
+.quote{
+    padding-left: 30px;
+    font-size: 15px;
+    line-height: 25px;
+    letter-spacing: 1.26px;
+    color: #5B5858;
+    position: relative;
+}
+.quote::before{
+    content: '';
+    position: absolute;
+    top: 14px;
+    left: 0;
+    width: 20px;
+    height: 2px;
+    background: #353535;
+}
+/* -----------------------------------------------------------------------
+-------------------------------services--------------------------------
+--------------------------------------------------------------------------  */
+.gray-page{
+    background: #FBFBFB;
+    padding: 135px 0;
+    margin-top: 150px;
+}
+.gray-page__body{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.title{
+    margin-bottom: 90px;
+    font-family: Oswald;
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 71px;
+    letter-spacing: 3.072px;
+    color: #252525;    
+    position: relative;
+}
+.title::before{
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 45px;
+    height: 2px;
+    background: #252525;
 }
