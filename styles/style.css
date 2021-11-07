@@ -388,6 +388,9 @@
 /* -----------------------------------------------------------------------
 -----------------------------------team--------------------------------
 --------------------------------------------------------------------------  */
+.team{
+    margin-bottom: 117px;
+}
 .team__row{
     display: flex;
     justify-content: space-between;
@@ -456,4 +459,82 @@
     line-height: 25px;
     letter-spacing: 1.008px;
     color: #777777;    
+}
+/* -----------------------------------------------------------------------
+-------------------------------reviews---------------------------------
+--------------------------------------------------------------------------  */
+.reviews{
+    margin-bottom: 117px;
+}
+.reviews__body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.reviews__btns{
+    position: absolute;
+    bottom: 12px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.reviews__btn{
+    background: none;
+    border: none;
+}
+.reviews__item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 735px;
+    width: 100%;
+    position: relative;
+}
+.reviews__item::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 511px;
+    height: 1px;
+    transform: translateX(-50%);
+    background: #D8D8D850;
+}
+.reviews__item-p{
+    font-size: 14px;
+    line-height: 31px;
+    text-align: center;
+    letter-spacing: 0.896px;
+    color: #373737;
+    margin-bottom: 30px;    
+}
+.reviews__item-quote{
+    margin-bottom: 30px;
+}
+.reviews__item-name{
+    font-family: Oswald;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 27px;
+    text-align: center;
+    letter-spacing: 1.152px;
+    color: #373737;
+    margin-bottom: 25px;
+}
+.reviews__item-name span{
+    font-family: Oswald;
+    font-size: 14px;
+    font-weight: 300;
+}
+.stars{
+    margin-bottom: 30px;
+}
+.star.transparent{
+    opacity: 0.2;
 }
