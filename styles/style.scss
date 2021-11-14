@@ -1,0 +1,711 @@
+@mixin flex($align, $justify){
+    display: flex;
+    align-items: $align;
+    justify-content: $justify;
+}
+@mixin font($size, $line-height){
+    font-size: $size;
+    line-height: $line-height;
+}
+@mixin rect($width, $height){
+    width: $width;
+    height: $height;
+}
+@mixin ab-top-left($top, $left){
+    position: absolute;
+    top: $top;
+    left: $left;
+}
+@mixin ab-bot-left($bot, $left){
+    position: absolute;
+    bottom: $bot;
+    left: $left;
+}
+$font: 'Oswald';
+$white: #FFFFFF;
+$dark: #252525;
+$gray: #373737;
+$light-gray: #FBFBFB;
+$green: #4CAF50;
+$light-green: #70BF73;
+$small-transition: 200ms ease-in-out;
+$small-linear-transition: 200ms linear;
+$medium-transition: 400ms ease-in-out;
+$block-spacing: 150px;
+.font-light{
+    font-weight: 300;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    &::before,
+    &::after{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+}
+a{
+    text-decoration: none;
+}
+.header{
+    position: absolute;
+    top: 80px;
+    width: calc(100% - 100px);
+    z-index: 2;
+    & .container{
+        @include flex(center, flex-end);
+        width: 100%;
+    }
+    &__list{
+        @include flex(center, flex-end);
+        list-style-type: none;
+    }
+    &__li:not(:last-of-type){
+        margin-right: 58px;
+    }
+    &__link{
+        @include font(14px, 21px);
+        font-family: $font;
+        letter-spacing: 1.94px;
+        color: $white;
+        position: relative;
+    }
+    &__link::after{
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        right: 0;
+        @include rect(18px, 2px);
+        background: $green;
+        transition: width $small-transition;
+    }
+    &__link:hover{
+        color: $white;
+    }
+    &__link:hover::after{
+        width: calc(100% + 8px);
+    }
+}
+.wrapper{
+    padding: 50px;
+    position: relative;
+}
+.quote{
+    padding-left: 30px;
+    @include font(15px, 25px);
+    letter-spacing: 1.26px;
+    color: #5B5858;
+    position: relative;
+    &::before{
+        content: '';
+        @include ab-top-left(14px, 0);
+        @include rect(20px, 2px);
+        background: #353535;
+    }
+}
+.stars{
+    margin-bottom: 30px;
+    &.transparent{
+        opacity: 0.2;
+    }
+}
+.gray-page{
+    background: $light-gray;
+    padding: 135px 0;
+    margin-top: $block-spacing;
+    &__body{
+        @include flex(flex-start, flex-start);
+        flex-direction: column;
+    }
+    &__row{
+        @include flex(stretch, space-between);
+        width: 100%;
+    }
+}
+.title{
+    margin-bottom: 90px;
+    font-family: $font;
+    font-weight: bold;
+    @include font(48px, 71px);
+    letter-spacing: 3.072px;
+    color: $dark;    
+    position: relative;
+    &::before{
+        content: '';
+        @include ab-bot-left(7px, 0);
+        @include rect(45px, 2px);
+        background: $dark;
+    }
+}
+/* -----------------------------------------------------------------------
+----------------------------------intro---------------------------------
+-------------------------------------------------------------------------  */
+.intro{
+    @include rect(100%, calc(100vh - 100px));
+    position: relative;
+    & .carousel{
+        height: 100%;
+        &-inner,
+        &-item{
+            height: 100%;
+        }
+        &-item img{
+            height: 100%;
+            object-fit: cover;
+        }
+        &-caption{
+            bottom: 50%;
+            transform: translateY(50%);
+        }
+        &-indicators{
+            @include flex(flex-end, center);
+            & button{
+                @include flex(center, center);
+                @include font(18px, 27px);
+                @include rect(22px, 25px);
+                text-indent: 0;
+                background-color: transparent;
+                color: $white;
+                font-family: $font;
+                position: relative;
+                font-weight: 700;
+                margin: 0 5px;
+            }
+            & button::before{
+                content: '';
+                @include ab-top-left(50%, -4px);
+                transform: translateY(-50%);
+                @include rect(14px, 2px);
+                background: $green;
+                opacity: 0;
+            }
+            & button::after{
+                content: '';
+                @include ab-top-left(50%, 5px);
+                transform: translateY(-50%);
+                @include rect(37px, 2px);
+                background: $green;
+                transition: $small-linear-transition;
+                z-index: -1;
+                opacity: 0;
+            }
+            & button.active{
+                @include rect(37px, 49px);
+                @include font(36px, 53px);
+                margin-bottom: -4px;
+            }
+            & button.active::before,
+            & button.active::after{
+                opacity: 1;
+            }
+        }
+    }
+    &__title{
+        font-family: $font;
+        font-weight: 500;
+        @include font(72px, 107px);
+        letter-spacing: 4.608px;
+        color: $white;
+    }
+    &__desc{
+        @include font(20px, 23px);
+        letter-spacing: 1.28px;
+        color: $white;
+        opacity: 0.8;
+    }
+}
+/* -----------------------------------------------------------------------
+-----------------------------advantages-----------------------------
+-------------------------------------------------------------------------  */
+.advantages{
+    margin-top: $block-spacing;
+    &__body{
+        @include flex(center, space-between);
+        position: relative;
+    }
+    &__info{
+        align-self: flex-start;
+        margin-top: 70px;
+        width: 350px;
+        position: absolute;
+        z-index: 2;
+        left: 15px;
+    }
+    &__info .quote{
+        margin-left: 20px;
+    }
+    &__images{
+        @include flex(center, space-between);
+        height: 560px;
+        margin: 0 auto;
+    }
+    &__img{
+        @include rect(309px, 391px);
+        object-fit: cover;
+    }
+    &__img:first-of-type{
+        align-self: flex-start;
+        z-index: 1;
+        margin-right: -90px;
+    }
+    &__img:last-of-type{
+        align-self: flex-end;
+        z-index: -1;
+        margin-left: -90px;
+    }
+    &__img_green{
+        @include rect(309px, 418px);
+        background: $green;
+        opacity: 0.8;
+        z-index: 0;
+    }
+    &__left{
+        position: absolute !important;
+        align-self: flex-end;
+        right: 15px;
+        width: 311px;
+        margin-bottom: 80px;
+    }
+    &__title{
+        margin-bottom: 30px;
+        display: flex;
+        flex-direction: column;
+        font-family: $font;
+        font-weight: bold;
+        @include font(36px, 53px);
+        letter-spacing: 2.304px;
+        color: #333333;
+    }
+    &__title span{
+        @include font(42px, 49px);
+        letter-spacing: 2.688px;
+        @extend .font-light;
+        color: #504E4E;
+    }
+}
+/* -----------------------------------------------------------------------
+-------------------------------services--------------------------------
+--------------------------------------------------------------------------  */
+.services{
+    margin-bottom: $block-spacing;
+    &__item{
+        @include rect(373px, 260px);
+        background: $white;
+        padding: 50px 48px 35px 44px;
+        position: relative;
+    }
+    &__item.active::before{
+        content: '';
+        @include ab-bot-left(0, 0);
+        @include rect(100%, 3px);
+        background: $light-green;
+    }
+    &__item-title{
+        font-family: $font;
+        @extend .font-light;
+        @include font(20px, 30px);
+        letter-spacing: 1.28px;
+        text-transform: uppercase;
+        color: $dark;
+        margin-bottom: 36px;
+        position: relative;
+    }
+    &__item-title::before{
+        content: '';
+        @include ab-bot-left(-15px, 0);
+        @include rect(35px, 2px);
+        background: $dark;
+    }
+    &__item-header{
+        @include flex(flex-start, space-between);
+    }
+    &__item-img{
+        @include rect(50px, 50px);
+        background: $white;
+        box-shadow: 0px 0px 20px #DBDBDB;
+        @include flex(center, center);
+        border-radius: 50%;
+    }
+    &__item-img img{
+        pointer-events: none;
+    }
+    &__item-p{
+        @include font(12px, 25px);
+        letter-spacing: 1.008px;
+        color: #777777;
+    }
+    &__item-link{
+        font-family: $font;
+        @extend .font-light;
+        @include font(10px, 15px);
+        letter-spacing: 0.64px;
+        text-transform: uppercase;
+        color: $dark;
+        opacity: 0.5;
+        transition: $small-transition;
+    }
+    &__item-link:hover{
+        color: $dark;
+        opacity: 1;
+    }
+    &__item-link.active{
+        color: $dark;
+        opacity: 1;
+    }
+}
+/* -----------------------------------------------------------------------
+-----------------------------------works-------------------------------
+--------------------------------------------------------------------------  */
+.works{
+    &__header{
+        @include flex(flex-start, flex-start);
+        flex-direction: column;
+        margin-bottom: $block-spacing;
+    }
+    &__title{
+        margin-bottom: 60px;
+    }
+    &__list{
+        @include flex(center, flex-start);
+        list-style-type: none;
+        padding-left: 0;
+    }
+    &__li:not(:last-of-type){
+        margin-right: 40px;
+    }
+    &__link{
+        @include font(13px, 15px);
+        letter-spacing: 0.832px;
+        color: #25252530;
+        transition: $small-transition;
+    }
+    &__link.active,
+    &__link:hover{
+        color: $dark;
+    }
+    &__content{
+        @include flex(flex-start, space-between);
+        position: relative;
+    }
+    &__col{
+        width: 50%;
+    }
+    &__col_right{
+        margin-top: -360px;
+    }
+    &__item{
+        @include flex(flex-start, flex-start);
+        flex-direction: column;
+        width: 100%;
+    }
+    &__item:hover &__item-title{
+        text-decoration: line-through;
+        text-decoration-color: $light-green;
+    }
+    &__item:hover &__item-link{
+        opacity: 1;
+        visibility: visible;
+    }
+    &__item:not(:last-of-type){
+        margin-bottom: 130px;
+    }
+    &__col_right &__item,
+    &__col_right &__item-content,
+    &__col_right &__item-header{
+        @include flex(flex-end, flex-start);
+        flex-direction: column;
+        text-align: right;
+    }
+    &__col_right &__item-content{
+        margin-right: 130px;
+    }
+    &__col_left &__item-content{
+        margin-left: 130px;
+    }
+    &__item-header{
+        width: 100%;
+        position: relative;
+    }
+    &__item-header img{
+        max-width: 455px;
+        width: 100%;
+        height: 444px;
+    }
+    &__col_left &__item-title{
+        right: 0;
+    }
+    &__col_right &__item-title{
+        left: 0;
+    }
+    &__item-title{
+        font-family: $font;
+        @extend .font-light;
+        @include font(48px, 71px);
+        letter-spacing: 3.072px;
+        color: $dark;
+        position: absolute;
+        top: 50%;
+        transition: text-decoration-color $medium-transition;
+        text-decoration-color: transparent;
+    }
+    &__item-content{
+        margin-top: 23px;
+    }
+    &__item-category{
+        @include font(18px, 21px);
+        letter-spacing: 1.152px;
+        color: $dark;
+        margin-bottom: 20px;
+    }
+    &__item-desc{
+        @include font(13px, 23px);
+        letter-spacing: 0.832px;
+        color: #C2C2C2;
+        max-width: 336px;
+        margin-bottom: 20px;
+    }
+    &__item-link{
+        position: relative;
+        @include font(13px, 15px);
+        letter-spacing: 0.832px;
+        color: $dark;
+        opacity: 0;
+        visibility: hidden;
+        transition: $small-transition;
+        text-decoration: line-through;
+        text-decoration-color: $light-green;
+    }
+    &__item-link:hover{
+        color: $dark;
+    }
+    &__more{
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        font-family: $font;
+        font-weight: normal;
+        @include font(13px, 19px);
+        text-align: right;
+        letter-spacing: 2px;
+        color: $dark;
+        transition: $small-transition;
+        text-decoration-color: transparent;
+    }
+    &__more:hover{
+        color: $dark;
+        text-decoration: line-through;
+        text-decoration-color: $light-green;
+    }
+}
+/* -----------------------------------------------------------------------
+-----------------------------------team--------------------------------
+--------------------------------------------------------------------------  */
+.team{
+    margin-bottom: $block-spacing;
+    &__row{
+        @include flex(stretch, space-between);
+        width: 100%; 
+    }
+    &__item{
+        width: 370px;
+        height: 398px;
+        position: relative;
+        @include flex(stretch, flex-end);
+        flex-direction: column;
+        overflow: hidden;
+    }
+    &__item:hover &__item-content{
+        bottom: 0;
+        background: #ffffff98;
+    }
+    &__item-img{
+        position: absolute;
+        @include rect(100%, 100%);
+    }
+    &__item-content{
+        z-index: 1;
+        background: #FFFFFF50;
+        @include flex(center, flex-start);
+        flex-direction: column;
+        padding: 17px 20px 10px 20px;
+        height: 155px;
+        position: relative;
+        bottom: -100px;
+        transition: bottom $small-transition;
+    }
+    &__item-title{
+        font-family: $font;
+        @extend .font-light;
+        @include font(18px, 27px);
+        letter-spacing: 1.152px;
+        color: $dark;    
+        margin-bottom: 12px;
+    }
+    &__item-hr{
+        @include rect(45px, 2px);
+        background: $dark;
+        margin-bottom: 6px;
+    }
+    &__item-position{
+        font-family: $font;
+        @extend .font-light;
+        @include font(18px, 27px);
+        letter-spacing: 1.152px;
+        color: $dark;    
+        margin-bottom: 12px;
+    }
+    &__item-desc{
+        @include font(12px, 25px);
+        letter-spacing: 1.008px;
+        color: #777777;    
+    }
+}
+/* -----------------------------------------------------------------------
+-------------------------------reviews---------------------------------
+--------------------------------------------------------------------------  */
+.reviews{
+    margin-bottom: $block-spacing;
+    &__body{
+        @include flex(center, center);
+        flex-direction: column;
+        position: relative;
+    }
+    &__btns{
+        @include ab-bot-left(12px, 0);
+        @include rect(100%, 20px);
+        @include flex(center, space-between);
+    }
+    &__btn{
+        background: none;
+        border: none;
+    }
+    &__item{
+        @include flex(center, flex-start);
+        flex-direction: column;
+        max-width: 735px;
+        width: 100%;
+        position: relative;
+    }
+    &__item::before{
+        content: '';
+        @include ab-bot-left(0, 50%);
+        @include rect(511px, 1px);
+        transform: translateX(-50%);
+        background: #D8D8D850;
+    }
+    &__item-p{
+        @include font(14px, 31px);
+        text-align: center;
+        letter-spacing: 0.896px;
+        color:  $gray;
+        margin-bottom: 30px;    
+    }
+    &__item-quote{
+        margin-bottom: 30px;
+    }
+    &__item-name{
+        font-family: $font;
+        font-weight: normal;
+        @include font(18px, 27px);
+        text-align: center;
+        letter-spacing: 1.152px;
+        color:  $gray;
+        margin-bottom: 25px;
+    }
+    &__item-name span{
+        font-family: $font;
+        font-size: 14px;
+        @extend .font-light;
+    }
+}
+/* -----------------------------------------------------------------------
+-------------------------------contacts-------------------------------
+--------------------------------------------------------------------------  */
+.contacts{
+    @include flex(stretch, space-between);
+    &-gray{
+        background: $light-gray;
+        color:  $gray;
+    }
+    &-green{
+        background: #70BD59;
+        color: $white;
+    }
+    &__item{
+        @include flex(center, center);
+        @include rect(50%, 300px);
+        flex-direction: column;
+        padding: 30px;
+    }
+    &__item-img{
+        margin-bottom: 16px;
+    }
+    &__item-title{
+        font-family: $font;
+        @include font(24px, 36px);
+        text-align: center;
+        letter-spacing: 2.66667px; 
+        margin-bottom: 22px;
+    }
+    &__item-p{
+        opacity: 0.8;
+        @include font(14px, 16px);
+        text-align: center;
+        letter-spacing: 1.55556px;
+    }
+}
+/* -----------------------------------------------------------------------
+---------------------------------footer---------------------------------
+--------------------------------------------------------------------------  */
+.footer{
+    &__body{
+        height: 340px;
+        background: #2E2E2E;
+        @include flex(center, center);
+        flex-direction: column;
+    }
+    &__p{
+        font-family: $font;
+        @extend .font-light;
+        @include font(13px, 19px);
+        letter-spacing: 0.832px;
+        color: $white;
+        opacity: 0.5;
+        margin-bottom: 10px;
+    }
+    &__p:last-of-type{
+        margin-bottom: 40px;
+    }
+    &__p a{
+        font-family: $font;
+        @extend .font-light;
+        @include font(13px, 19px);
+        letter-spacing: 0.832px;
+        color: $white;
+    }
+    &__bottom{
+        @include flex(center, center);
+        background: $dark;
+        padding: 20px;
+    }
+    &__bottom-p{
+        font-family: $font;
+        @extend .font-light;
+        @include font(13px, 19px);
+        letter-spacing: 0.832px;
+        color: $white;
+        opacity: 0.5;
+    }
+    &__bottom-p a{
+        font-family: $font;
+        @extend .font-light;
+        color: $white;
+    }
+    &__icon:not(:last-of-type){
+        margin-right: 20px;
+    }
+}
